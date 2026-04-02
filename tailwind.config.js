@@ -1,16 +1,14 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx}",       // لو تستخدم app directory
-    "./src/pages/**/*.{js,ts,jsx,tsx}",     // لو تستخدم pages directory
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        primary: "red",  // اللون الجديد اللي طلبته
+        primary: "var(--primary)",
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };

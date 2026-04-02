@@ -19,18 +19,18 @@ export type LinkType = {
 
 const links: LinkType[] = [
   {
-    id: "dashboard",
+    id: "dashboards",
     label: "Dashboard",
     icon: <BiCategory className='text-xl'/>,
-    link: "",
+    link: "/#",
     click: function (e) {
       e.preventDefault();
     },
     subItems: [
       {
         id: "dashboard ",
-        label: "dashboard",
-        link: "/"
+        label: "Dashboard",
+        link: "/dashboard"
       },
     ].filter(Boolean),
   },
@@ -44,14 +44,14 @@ const links: LinkType[] = [
     },
     subItems: [
       {
-        id: "orders",
+        id: "order",
         label: "orders",
         link: "/orders"
       },
       {
         id: "sales",
         label: "Sales",
-        link: ""
+        link: "/login"
       },
     ].filter(Boolean),
   },
@@ -59,21 +59,12 @@ const links: LinkType[] = [
     id: "products",
     label: "Products",
     icon: <IoMdSettings className='text-xl' />,
-    link: "",
+    link: "/register",
     click: function (e) {
       e.preventDefault();
     },
     subItems: [
-      {
-        id: "analytics",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
+      
     ].filter(Boolean),
   },
 
@@ -136,182 +127,8 @@ const links: LinkType[] = [
     ].filter(Boolean),
   },
 
-  {
-    id: "dashboardas",
-    label: "Dashboard",
-    icon: <BiCategory className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "dashboard ",
-        label: "dashboard",
-        link: "/"
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "ordersas",
-    label: "Orders",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analyticsa",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "productsas",
-    label: "Products",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analytics",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
-
-  {
-    id: "dashboardaf",
-    label: "Dashboard",
-    icon: <BiCategory className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "dashboard ",
-        label: "dashboard",
-        link: "/"
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "ordersaf",
-    label: "Orders",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analyticsa",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "productsaf",
-    label: "Products",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analyticsf",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
-
-  {
-    id: "dashboardaj",
-    label: "Dashboard",
-    icon: <BiCategory className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "dashboard ",
-        label: "dashboard",
-        link: "/"
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "ordersaj",
-    label: "Orders",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analyticsa",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "productsaj",
-    label: "Products",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analytics",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
 ];
 
-export default links;
+
+
+export default links ;

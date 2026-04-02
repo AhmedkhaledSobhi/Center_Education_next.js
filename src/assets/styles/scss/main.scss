@@ -1,0 +1,42 @@
+// _____________/ \_____________
+@import 'variables';
+
+// ____________________________
+
+
+// _____________/ Start Scrollbar Styles \_____________
+::-webkit-scrollbar-thumb {
+  background-color: $primary;
+  border-radius: 5px;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 6px;
+  background: transparent;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e1e1e1;
+}
+// _____________/ End Scrollbar Styles \_____________
+
+// _____________/ Start Scrollbar Sidebar \_____________
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Edge, Safari */
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+// _____________/ End Scrollbar Sidebar \_____________
+
+// ____________________________
+.Sidebar{
+  background-color: $sidebar-bg-color;
+  
+}

@@ -1,31 +1,17 @@
 @import "tailwindcss";
-@plugin "daisyui";
 
-
-/* $primary: #0d6efd;
-$primary2: #0d6dfdb3;
-$secondary: #6c757d;
-$danger: #d60000;
-$green: #00bd9d;
-$yellow: #ffbc0a;
-$orange: #f1963b;
-$blue: #32ccff;
-$cyan: #25a0e2; */
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --primary: #0d6efd;
   --secondary: #283c47;
-
   --primary2: #0d6dfdb3;
-  /* --secondary: #6c757d; */
   --danger: #d60000;
   --green: #00bd9d;
   --yellow: #ffbc0a;
   --orange: #f1963b;
   --blue: #32ccff;
   --cyan: #25a0e2;
-
 }
 
 body {
@@ -43,32 +29,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary) !important;
-  border-radius: 5px;
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 6px;
-  background: transparent;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--primary) !important;
-}
-
-/* globals.css أو أي ملف CSS مستورد */
-.scrollbar-none::-webkit-scrollbar {
-  display: none; /* Chrome, Edge, Safari */
-}
-
-.scrollbar-none {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
