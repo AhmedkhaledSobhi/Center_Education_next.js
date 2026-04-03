@@ -67,66 +67,6 @@ const links: LinkType[] = [
       
     ].filter(Boolean),
   },
-
-  {
-    id: "dashboarda",
-    label: "Dashboard",
-    icon: <BiCategory className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "dashboard ",
-        label: "dashboard",
-        link: "/"
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "ordersa",
-    label: "Orders",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analyticsa",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
-  {
-    id: "productsa",
-    label: "Products",
-    icon: <CiHome className='text-xl' />,
-    link: "",
-    click: function (e) {
-      e.preventDefault();
-    },
-    subItems: [
-      {
-        id: "analytics",
-        label: "Analytics",
-        link: ""
-      },
-      {
-        id: "sales",
-        label: "Sales",
-        link: ""
-      },
-    ].filter(Boolean),
-  },
-
 ];
 
 

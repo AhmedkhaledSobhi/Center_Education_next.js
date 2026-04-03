@@ -1,4 +1,4 @@
-import BreadCrumb from '@/components/BreadCrumb'
+import BreadCrumb from '@/components/BreadCrumb/BreadCrumb'
 import React from 'react'
 
 export default function Dashboard() {
