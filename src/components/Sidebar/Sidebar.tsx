@@ -69,7 +69,7 @@ export default function Sidebar() {
               <div className="flex items-center justify-between gap-2 text-white cursor-pointer  ">
                 <div className='flex items-center gap-2  text-[22px] font-bold'>
                   {item.icon}
-                  <span className='hover:text-red-700 cursor-pointer transition-colors text-[18px]'>
+                  <span className='hover:text-blue-700 cursor-pointer transition-colors text-[18px]'>
                     {!item.subItems?.length ? (
                       <Link href={`${item.link}`}>
                         {item.label}
@@ -89,7 +89,7 @@ export default function Sidebar() {
                   <li key={subIndex} className='text-white cursor-pointer flex items-center' style={{ fontSize: "medium"}}>
                     <TiMinus />
                     <Link href={`${subItem.link}`}
-                      className={`p-2 hover:text-red-700 transition-colors ${activeLink === subItem.link ? "text-red-700" : "text-white"}`}
+                      className={`p-2 hover:text-blue-700 transition-colors ${activeLink === subItem.link ? "text-blue-700" : "text-white"}`}
                       onClick={(e) => handleSubLinkClick(e, item.id, subItem.link)}
                     >
                       {subItem.label}
