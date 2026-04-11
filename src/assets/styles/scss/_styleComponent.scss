@@ -1,0 +1,34 @@
+@use 'variables' as *;
+
+// _____________/ soon & قريباً \_____________
+.soon-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.soon-container {
+  position: absolute;
+  overflow: hidden;
+  // transform: rotate(-45deg);
+  // left: -15px;
+  top: 5px !important;
+  background: $primary;
+  text-align: center;
+  color: white;
+  display: block;
+  font-size: 12px;
+  width: 50px;
+  padding: 1px 0;
+}
+html[lang="ar"] {
+  .soon-container {
+    left: -15px !important;
+    transform: rotate(-50deg) !important;
+  }
+};
+html[lang="en"] {
+  .soon-container {
+    right: -15px !important;
+    transform: rotate(45deg) !important;
+  }
+};
