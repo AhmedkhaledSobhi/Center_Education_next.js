@@ -158,7 +158,7 @@ export default function LoginPage() {
               </div>
 
               {/* Sign In */}
-              <button className="w-full h-15 rounded-2xl mt-6 text-white font-semibold text-xl bg-gradient-to-r from-blue-700 to-blue-500 hover:opacity-95 transition">
+              <button className="w-full h-15 rounded-2xl mt-6 text-white font-semibold text-xl bg-linear-to-r from-blue-700 to-blue-500 hover:opacity-95 transition">
                 Sign In
               </button>
 
