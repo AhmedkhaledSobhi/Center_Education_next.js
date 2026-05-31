@@ -1,4 +1,7 @@
 {
+  "login": {
+    "Welcome_Back": "Welcome Back"
+  },
   "HomePage": {
     "title": "Welcome",
     "description": "This is home page"

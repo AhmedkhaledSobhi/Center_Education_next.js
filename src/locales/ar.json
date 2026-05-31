@@ -1,4 +1,7 @@
 {
+  "login": {
+    "Welcome_Back": "مرحباً بعودتك"
+  },
   "HomePage": {
     "title": "مرحباً",
     "description": "هذه هي الصفحة الرئيسية"
