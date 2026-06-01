@@ -1,9 +1,36 @@
 {
   "login": {
-    "Welcome_Back": "مرحباً بعودتك"
+    "Welcome_Back": "مرحباً بعودتك",
+    "Continue_to_Center_Education": "سجّل الدخول للمتابعة إلى Center Education",
+    "Email_Address": "البريد الإلكتروني",
+    "Password": "كلمة المرور",
+    "Forgot Password": "نسيت كلمة المرور؟",
+    "Sign_In": "تسجيل الدخول",
+    "Sign_Up": "إنشاء حساب",
+    "Don_t_have_an_account": "ليس لديك حساب؟",
+
+
+    "Learn_Today": "تعلم اليوم",
+    "Lead_Tomorrow_1": "قيادة الغد",
+    "Lead": "قيادة",
+    "Tomorrow": "الغد",
+    "Center_Academy_Description": "Center Education هي بوابتك إلى تعليم عالي الجودة، ومهارات حقيقية، ومستقبل أكثر إشراقًا",
+
+    "Expert_Instructors": "مدربون خبراء",
+    "Expert_Instructors_Description": "تعلم من خبراء في المجال ومربين شغوفين بالتعليم.",
+    "Quality_Courses": "دورات عالية الجودة",
+    "Quality_Courses_Description": "احصل على مجموعة واسعة من الدورات عالية الجودة.",
+    "Achieve_Your_Goals": "حقق أهدافك",
+    "Achieve_Your_Goals_Description": "اكتسب المعرفة والمهارات لتحقيق أحلامك.",
+    
+    "": ""
   },
   "HomePage": {
     "title": "مرحباً",
     "description": "هذه هي الصفحة الرئيسية"
+  },
+  "common": {
+    "Enter": "أدخل",
+    "": ""
   }
 }

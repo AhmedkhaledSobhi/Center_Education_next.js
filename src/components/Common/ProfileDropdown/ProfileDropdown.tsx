@@ -58,7 +58,7 @@ export default function ProfileDropdown() {
         {/* Trigger */}
         <button
           onClick={() => setOpen((prev) => !prev)}
-          className="flex items-center gap-2 px-2 py-1"
+          className="flex items-center gap-2 px-2 py-1  cursor-pointer"
         >
           <div className="w-8 h-8 overflow-hidden rounded-full">
             <Image

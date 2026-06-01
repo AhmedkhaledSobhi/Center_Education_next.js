@@ -42,7 +42,7 @@ export default function FullScreenDropdown() {
       <div className="hidden sm:flex items-center border-0">
         <button
           onClick={toggleFullscreen}
-          className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-blue-100 transition"
+          className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-blue-100 transition cursor-pointer"
         >
           {isFullScreen ?
             <MdOutlineFullscreenExit className='text-[30px]  text-blue-600'/>

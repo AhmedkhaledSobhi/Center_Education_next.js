@@ -1,9 +1,33 @@
 {
   "login": {
-    "Welcome_Back": "Welcome Back"
+    "Welcome_Back": "Welcome Back",
+    "Continue_to_Center_Education": "Sign in to continue to Center Education",
+    "Email_Address": "Email Address",
+    "Password": "Password",
+    "Forgot Password": "Forgot Password?",
+    "Sign_In": "Sign In",
+    "Sign_Up": "Sign Up",
+    "Don_t_have_an_account": "Don't have an account",
+
+    "Learn_Today": "Learn Today",
+    "Lead_Tomorrow": "Lead Tomorrow",
+    "Lead": "Lead",
+    "Tomorrow": "Tomorrow",
+    "Center_Academy_Description": "Center Education is your gateway to quality education, real skills, and a brighter future",
+    "Expert_Instructors": "Expert Instructors",
+    "Expert_Instructors_Description": "Learn from industry experts and passionate educators.",
+    "Quality_Courses": "Quality Courses",
+    "Quality_Courses_Description": "Access a wide range of high-quality courses.",
+    "Achieve_Your_Goals": "Achieve Your Goals",
+    "Achieve_Your_Goals_Description": "Gain the knowledge and skills to achieve your dreams.",
+    "": ""
   },
   "HomePage": {
     "title": "Welcome",
     "description": "This is home page"
+  },
+  "common": {
+    "Enter": "Enter",
+    "": ""
   }
 }

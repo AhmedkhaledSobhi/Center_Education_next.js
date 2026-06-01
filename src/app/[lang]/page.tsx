@@ -1,6 +1,7 @@
 "use client";
 import MySVG from "@/SVG/MySVG";
 import { GraduationCap } from "lucide-react";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,6 +9,8 @@ import { useState } from "react";
 export default function Home() {
   // redirect('/login')
   const router = useRouter();
+  const locale = useLocale();
+  
   const [activePlan, setActivePlan] = useState("pro");
   const courses = [
     {
@@ -51,27 +54,31 @@ export default function Home() {
     },
   ];
   return (
-    <main className="bg-slate-50 text-slate-900">
+    <main dir={locale === "ar" ? "rtl" : "ltr"} className="bg-slate-50 text-slate-900">
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-white border-b border-blue-700">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div 
-            className="flex items-center gap-0 cursor-pointer"
-            onClick={() => { router.push('/home') }}
+            className="flex items-center gap-3 cursor-pointer text-white bg-linear-to-r from-blue-700 to-blue-500 px-3 py-1.5 rounded-2xl"
+            onClick={() => { router.push('/dashboard') }}
+            style={{
+              background:
+                "linear-gradient(90deg,#001a4d 0%,#003b9e 100%)",
+            }}
           >
             <div className="w-15 bg-white/10 rounded-xl flex items-center justify-center">
-              <GraduationCap size={39} 
-                className="text-[#1447e6]"
+              <GraduationCap size={32} 
+                // className="text-[#1447e6]"
               />
             </div>
 
             <div>
-              <h1 className="text-3xl font-bold tracking-wide text-blue-700">
+              <h1 className="text-2xl font-bold tracking-wide text -blue-700">
                 CENTER
               </h1>
 
-              <p className="text-xl tracking-[4px] text-blue-700">
-                ACADEMY
+              <p className="text-xs tracking-[3px] text -blue-700">
+                EDUCATION
               </p>
             </div>
           </div>
@@ -97,7 +104,7 @@ export default function Home() {
           </h2>
 
           <p className="mt-4 text-slate-600">
-            Join Center Academy and access structured learning paths,
+            Join Center Education and access structured learning paths,
             expert instructors, and real-world projects.
           </p>
 
@@ -259,7 +266,7 @@ export default function Home() {
       <footer className="bg-white border-t py-10">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-6 text-sm">
           <div>
-            <h3 className="font-bold text-blue-700">Center Academy</h3>
+            <h3 className="font-bold text-blue-700">Center Education</h3>
             <p className="text-slate-500 mt-2">
               Learn. Build. Grow your future.
             </p>

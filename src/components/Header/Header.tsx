@@ -3,6 +3,7 @@ import ReloadDropdown from "../Common/ReloadDropdown/ReloadDropdown";
 import LanguageDropdown from "../Common/LanguageDropdown/LanguageDropdown";
 import FullScreenDropdown from "../Common/FullScreenDropdown/FullScreenDropdown";
 import ProfileDropdown from "../Common/ProfileDropdown/ProfileDropdown";
+import BackDropdown from "../Common/BackDropdown/BackDropdown";
 
 export default function Header() {
 
@@ -20,6 +21,8 @@ export default function Header() {
 
             {/* ReloadDropdown */}
             <ReloadDropdown/>
+            {/* Back */}
+            <BackDropdown />
 
             {/* LanguageDropdown */}
             <LanguageDropdown />

@@ -7,12 +7,15 @@ import Link from 'next/link';
 import layoutLinks from './LayoutMenuData';
 import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
 import { TiMinus } from 'react-icons/ti';
+import { GraduationCap } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 
 export default function Sidebar() {
   const [activeLink, setActiveLink] = useState<string>("/");
   const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({});
   const links = layoutLinks;
+    const router = useRouter();
 
   const toggleMenu = (id: string) => {
     setOpenSubmenus(prev => {
@@ -43,16 +46,38 @@ export default function Sidebar() {
   };
   return (
     <React.Fragment>
-      <aside className="Sidebar fixed top-0 right-0 bottom-0 z-50 p-2.5  font-bold text-xl bg-blue-900 "
-        style={{ width: "calc(100% - 82.33333%)"}}
+      <aside className="Sidebar fixed top-0 right-0 bottom-0 z-50 p-2.5  font-bold text-xl bg- blue-900 "
+        style={{ 
+          width: "calc(100% - 82.33333%)",
+        
+          background:
+          "linear-gradient(180deg,#001a4d 0%,#003b9e 100%)",
+        }}
+
       >
-        <div className='md-[h-20]  top-0 right-0 left- 0  flex items-center justify-center mt-3.5'>
-          <Link href="/" className='flex items-center gap-2'>
+        <div className='md-[h-20] text-white top-0 right-0 left- 0  flex items-center justify-center mt-3.5'>
+          {/* <Link href="/" className='flex items-center gap-2'>
             <Image src={MySVG.logoLight} alt="Logo" width={170} height={170} />
-          </Link>
+          </Link> */}
+          <div className="flex items-center gap-4 mb-0"
+            onClick={() => { router.push('/') }}
+          >
+            <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center">
+              <GraduationCap size={36} />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold tracking-wide">
+                CENTER
+              </h2>
+
+              <p className="text-xl tracking-[3px]">
+                EDUCATION
+              </p>
+            </div>
+          </div>
         </div>
 
-        <nav className="p-4 flex flex-col gap-2 mt-3.5 overflow-y-auto scrollbar-none bg- amber-500 "
+        <nav className="p-4 flex flex-col gap-2 mt-3.5 overflow-y-auto scrollbar-none "
          style={{ height: "calc(100vh - 80px)" }}
         >
     

@@ -46,7 +46,7 @@ export default function LanguageDropdown() {
         <div ref={dropdownRef} className="relative inline-block ">
           <button
             onClick={toggleDropdown}
-            className="flex items-center justify-center overflow-hidden rounded-[1.25rem]"
+            className="flex items-center justify-center overflow-hidden rounded-[1.25rem]  cursor-pointer"
           >
             <Image
               src={languages[selectedLang].flag}

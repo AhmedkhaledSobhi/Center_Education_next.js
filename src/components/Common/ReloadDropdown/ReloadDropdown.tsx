@@ -26,7 +26,7 @@ export default function ReloadDropdown() {
         <button
           onClick={handleReload}
           type="button"
-          className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
+          className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle cursor-pointer"
         >
           <IoReload className="text-[22px]"
             style={{ color: "#0d6efd" }}
