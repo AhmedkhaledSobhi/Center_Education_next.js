@@ -57,8 +57,8 @@ export default async function RootLayout({
   params: { lang: string };
 
 }>) {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("token");
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token");
   
   if (!token) {
     // redirect("/dashboard");

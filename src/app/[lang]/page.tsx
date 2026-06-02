@@ -66,7 +66,7 @@ export default function Home() {
                 "linear-gradient(90deg,#001a4d 0%,#003b9e 100%)",
             }}
           >
-            <div className="w-15 bg-white/10 rounded-xl flex items-center justify-center">
+            <div className="w-12 px-2 py-1 bg-white/10 rounded-xl flex items-center justify-center">
               <GraduationCap size={32} 
                 // className="text-[#1447e6]"
               />
@@ -77,7 +77,7 @@ export default function Home() {
                 CENTER
               </h1>
 
-              <p className="text-xs tracking-[3px] text -blue-700">
+              <p className="text-[15px] font-bold tracking-[1px] text -blue-700">
                 EDUCATION
               </p>
             </div>
