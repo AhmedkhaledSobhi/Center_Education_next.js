@@ -20,6 +20,18 @@
     "Quality_Courses_Description": "Access a wide range of high-quality courses.",
     "Achieve_Your_Goals": "Achieve Your Goals",
     "Achieve_Your_Goals_Description": "Gain the knowledge and skills to achieve your dreams.",
+    
+    "EmailIncorrect": "Invalid email address",
+    "EmailRequired": "Email address required",
+    "mobileNumberValidation": "Verify mobile number",
+    "enterSaudiCorrectNumber": "Enter correct phone number",
+    "PasswordDoesNotmatch": "Password not matched",
+    "passwordValidation": "Verify password",
+    "PasswordConfirmationRequired": "Password confirmation required",
+    "passwordMinLength": "Minimum password length (6)",
+    "loginByEmail": "Login using email",
+    "LoginByMobile": "Login using mobile number",
+
     "": ""
   },
   "HomePage": {

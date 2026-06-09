@@ -11,13 +11,23 @@ type Props = {
   children: ReactNode;
 };
 export default async function ProtectedLayout({ children }: Props) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("token");
+  // const cookieStore = await cookies();
+  // const token = cookieStore.get("token");
   const locale = await getLocale();
+  const token =
+    typeof window !== "undefined"
+      ? localStorage.getItem("access_token")
+      : null;
+  console.log("ahmed typeof window", typeof window);
+  console.log("ahmed token", token);
 
-  if (!token) {
-    // redirect("/login");
-  }
+  // const locale =
+  //   typeof window !== "undefined"
+  //     ? localStorage.getItem("i18nextLng")
+  //     : "en";
+  // if (!token) {
+  //   redirect("/login");
+  // }
 
   return (
     <div 
@@ -40,5 +50,4 @@ export default async function ProtectedLayout({ children }: Props) {
       </div>
     </div>
   ) 
-  // <>{children}</>;
 }

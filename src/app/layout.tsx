@@ -46,6 +46,7 @@
 // }
 
 
+import { Toaster } from "sonner";
 import "./globals.css";
 import { cookies } from "next/headers";
 
@@ -65,7 +66,14 @@ export default async function RootLayout({
   }
   return (
     <html lang={params.lang}>
-      <body>{children}</body>
+      <body>
+        <Toaster
+          position="top-center"
+          richColors
+          closeButton
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -23,6 +23,18 @@
     "Achieve_Your_Goals": "حقق أهدافك",
     "Achieve_Your_Goals_Description": "اكتسب المعرفة والمهارات لتحقيق أحلامك.",
     
+
+    "EmailIncorrect": "البريد الإلكتروني غير صحيح",
+    "EmailRequired": "البريد الإلكتروني مطلوب",
+    "mobileNumberValidation": "التحقق من رقم الجوال",
+    "enterSaudiCorrectNumber": "أدخل الرقم الهاتف الصحيح",
+    "PasswordDoesNotmatch": "كلمة المرور غير متطابقة",
+    "passwordValidation": "التحقق من صحة كلمة المرور",
+    "PasswordConfirmationRequired": "يلزم تأكيد كلمة المرور",
+    "passwordMinLength": "الحد الأدنى لطول كلمة المرور (6)",
+    "loginByEmail": "تسجيل الدخول عن طريق الايميل",
+    "LoginByMobile": "تسجيل الدخول عن طريق رقم الجوال",
+    
     "": ""
   },
   "HomePage": {
@@ -31,6 +43,39 @@
   },
   "common": {
     "Enter": "أدخل",
+    "": ""
+  },
+  "required": {
+    "required": "مطلوب",
+    "email": "البريد الإلكتروني غير صحيح",
+    "mobileNumberValidation": "التحقق من رقم الجوال",
+    "enterSaudiCorrectNumber": "أدخل الرقم الهاتف الصحيح",
+    "PasswordDoesNotmatch": "كلمة المرور غير متطابقة",
+    "passwordValidation": "التحقق من صحة كلمة المرور",
+    "PasswordConfirmationRequired": "يلزم تأكيد كلمة المرور",
+    "EmailIncorrect": "البريد الإلكتروني غير صحيح",
+    "EmailRequired": "البريد الإلكتروني مطلوب",
+    "phoneNumber": "رقم الهاتف مطلوب",
+    "must_be_integer": "يجب أن يكون رقم صحيح",
+    "must_be_at_least_one": "يجب أن يكون على الأقل 1",
+    "enter_valid_number": "أدخل رقم صحيح",
+    "enterEgyptianValidNumber": "أدخل رقم هاتف مصري صحيح",
+    "": ""
+  },
+
+  "ProfileDropdown": {
+    "Welcome": "مرحباً بك",
+    "Profile": "الملف الشخصي",
+    "UpgradesAndSubscriptions": "الترقيات والاشتراكات",
+    "changePassword": "تغيير كلمة المرور",
+    "Help": "المساعدة",
+    "accountSettings": "إعدادات الحساب",
+    "Logout": "تسجيل خروج",
+    "Settings": "الإعدادات",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "password": "كلمة المرور",
     "": ""
   }
 }

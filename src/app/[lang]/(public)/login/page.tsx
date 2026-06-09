@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   BookOpen,
@@ -15,13 +15,22 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import Footer from "./components/Footer";
 import LeftSide from "./components/LeftSide";
+import { toast } from "sonner";
+import axios, { AxiosError } from "axios";
+import configService from "@/helpers/config"
+import {LOGIN, PROFILES} from "@/helpers/url_helper"
+import { ErrorMessage, Formik } from 'formik';
+import * as Yup from "yup";
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false);
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginType, setLoginType] = useState("TEACHER");
+  const [loading, setLoading] = useState(false);
+
   const handleChangeLanguage = () => {
     const newLocale = locale === "ar" ? "en" : "ar";
     // إزالة اللغة الحالية من الـ URL
@@ -30,6 +39,104 @@ export default function LoginPage() {
     router.replace(`/${newLocale}${pathWithoutLocale}`);
   };
 
+  // ______________________________________________________________
+  interface LoginFormValues {
+    email: string;
+    password: string;
+  }
+  interface LoginResponse {
+    status: number;
+    message: string;
+    data: {
+      access_token: string;
+      user: {
+        id: number;
+        lang?: string;
+        [key: string]: unknown;
+      };
+      role?: string;
+    };
+  }
+  const login = async (values: LoginFormValues): Promise<void> => {
+    try {
+      const { ...payload } = values;
+
+      // تعديل رقم الهاتف والعمر
+      // if (phoneLogin) payload.phone = `(${seletedCountry?.code})${payload.phone}`;
+
+      const BASE_URL = configService.apiBaseUrl;
+      const { data: res } = await axios.post<LoginResponse>(`${BASE_URL}${LOGIN}`, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res && res?.status == 1) {
+        toast.success(res?.message, {
+          duration: 3000,
+        });
+
+        // store in session for 5 minutes
+        localStorage.setItem("role", JSON.stringify(res?.data?.user));
+        localStorage.setItem("authUser", JSON.stringify(res?.data?.user));
+        sessionStorage.setItem("authUser", JSON.stringify(res?.data?.user));
+
+        localStorage.setItem("userInfo", JSON.stringify(res?.data?.user));
+        localStorage.setItem("access_token", JSON.stringify(res?.data?.access_token));
+        localStorage.setItem("I18N_LANGUAGE", res?.data?.user?.lang ?? locale);
+        localStorage.setItem("i18nextLng", res?.data?.user?.lang ?? locale);
+
+        const authUser = JSON.parse(localStorage.getItem("authUser") || "{}");
+        const accessToken = JSON.parse(localStorage.getItem("access_token") || '""');
+        const loginToken = accessToken;
+        const idUser = authUser?.id
+
+        if (loginToken || idUser) {
+          axios.defaults.headers.common["Authorization"] =
+            `Bearer ${loginToken}`;
+          axios.defaults.headers.common["login-type"] = loginType;
+          const id = idUser;
+          try {
+            const response = await axios.get(`${BASE_URL}${PROFILES}`, { params: { id }, });
+            console.log("ahmed response", response);
+
+            localStorage.setItem("myInfo", JSON.stringify(response?.data?.data));
+            localStorage.setItem("loginType", JSON.stringify(response?.data?.data?.role));
+            router.replace("/dashboard");
+          } catch (error) {
+            // console.error(error.response?.data || error.message);
+          }
+        }
+      } else {
+        toast.error(res?.message, { 
+          duration: 3000,
+        });
+      }
+    } catch (error) {
+      console.error("error", error)
+    }
+  }
+
+  // ______________________________________________________________
+  // useEffect(() => {
+  //   const token = localStorage.getItem("access_token");
+
+  //   if (isLoginPage) {
+  //     if (token) {
+  //       router.replace("/dashboard");
+  //       return;
+  //     }
+  //   }
+
+  //   if (isDashboardPage) {
+  //     if (!token) {
+  //       router.replace("/login");
+  //       return;
+  //     }
+  //   }
+
+  //   setChecking(false);
+  // }, []);
 
   return (
     <div dir={locale === "ar" ? "rtl" : "ltr"} className="min-h-screen bg-gray-100 flex items-center justify-center px-6 py-4">
@@ -62,58 +169,146 @@ export default function LoginPage() {
                   {t("login.Continue_to_Center_Education")}
                 </p>
               </div>
+              <Formik
+                initialValues={{
+                  email: "",
+                  password: "",
+                }}
+                enableReinitialize={true}
+                validationSchema={Yup.object({
+                  email: Yup.string()
+                    .email(t("login.EmailIncorrect"))
+                    .matches(
+                      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      t("login.EmailIncorrect")
+                    )
+                    .required(t("login.EmailRequired")),
+                  password: Yup.string()
+                    .required(t("login.passwordValidation"))
+                    .min(6, t("login.passwordMinLength")),
+                })}
+                onSubmit={async (values, { resetForm }) => {
+                  setLoading(true);
+                  try {
+                    const payload = {
+                      ...values,
+                    }
+                    setLoading(true);
+                    await login(payload);
+                  } catch (err) {
+                    // toast.error(err, {
+                    //   position: "top-center",
+                    //   hideProgressBar: false,
+                    //   autoClose: 3000,
+                    //   progress: undefined,
+                    //   toastId: "",
+                    // });
+                  } finally {
+                    setLoading(false);
+                  }
+                }}
+              >
+                {({
+                  handleSubmit,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  values,
+                  isSubmitting,
+                  setFieldValue,
+                  resetForm,
 
-              {/* Email */}
-              <div className="mb-5">
-                <label className="block mb-3 font-medium">
-                  {t("login.Email_Address")}
-                </label>
+                }) => (<>
+                  <form
+                    onSubmit={handleSubmit}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        event.preventDefault();
+                      }
+                    }}
+                  >
 
-                <div className="flex items-center border rounded-2xl px-4 h-15">
-                  <Mail className="text-gray-400" />
+                    {/* Email */}
+                    <div className="mb-5">
+                      <label className="block mb-3 font-medium">
+                        {t("login.Email_Address")}
+                      </label>
 
-                  <input
-                    type="email"
-                    placeholder={`${t("common.Enter")} ${t("login.Email_Address")}`}
-                    className="w-full ml-3 outline-none bg-transparent"
-                    style={{ marginInlineStart: "calc(var(--spacing) * 3)"}}
-                  />
-                </div>
-              </div>
+                      <div className="flex items-center border rounded-2xl px-4 h-15">
+                        <Mail className="text-gray-400" />
 
-              {/* Password */}
-              <div>
-                <label className="block mb-2 font-medium">
-                  {t("login.Password")}
-                </label>
+                        <input
+                          name="email"
+                          value={values.email}  
+                          id="email"
+                          onChange={(e) =>
+                            setFieldValue("email", e.target.value)
+                          }
+                          onBlur={handleBlur}    
+                          type="email"
+                          placeholder={`${t("common.Enter")} ${t("login.Email_Address")}`}
+                          className="w-full ml-3 outline-none bg-transparent"
+                          style={{ marginInlineStart: "calc(var(--spacing) * 3)"}}
+                        />
+                      </div>
+                      {touched?.email && errors?.email && (
+                        <ErrorMessage
+                          name="email"
+                          component="div"
+                          className="text-red-500 font-bold mt-1"
+                        />
+                      )}
+                    </div>
 
-                <div className="flex items-center border rounded-2xl px-4 h-15">
-                  <Lock className="text-gray-400" />
+                    {/* Password */}
+                    <div>
+                      <label className="block mb-2 font-medium">
+                        {t("login.Password")}
+                      </label>
 
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder={`${t("common.Enter")} ${t("login.Password")}`}
-                    className="w-full ml -3 outline-none bg-transparent"
-                    style={{ marginInlineStart: "calc(var(--spacing) * 3)" }}
-                  />
-                  {showPassword ? (
-                    <EyeOff className="text-gray-400 cursor-pointer" onClick={()=> setShowPassword(!showPassword)}/>
-                  ) : (
-                    <Eye className="text-gray-400 cursor-pointer" onClick={()=> setShowPassword(!showPassword)}/>
-                  )}
-                </div>
+                      <div className="flex items-center border rounded-2xl px-4 h-15">
+                        <Lock className="text-gray-400" />
 
-                <div className={`mt-3 ${locale === "en" ? "text-left" : "text-right"}`}>
-                  <button className="text-blue-600 hover :underline">
-                    {t("login.Forgot Password")}
-                  </button>
-                </div>
-              </div>
+                        <input
+                          name="password"
+                          value={values.password}
+                          onChange={(e) =>
+                            setFieldValue("password", e.target.value)
+                          }
+                          type={showPassword ? "text" : "password"}
+                          placeholder={`${t("common.Enter")} ${t("login.Password")}`}
+                          className="w-full ml -3 outline-none bg-transparent"
+                          style={{ marginInlineStart: "calc(var(--spacing) * 3)" }}
+                        />
+                        {showPassword ? (
+                          <EyeOff className="text-gray-400 cursor-pointer" onClick={()=> setShowPassword(!showPassword)}/>
+                        ) : (
+                          <Eye className="text-gray-400 cursor-pointer" onClick={()=> setShowPassword(!showPassword)}/>
+                        )}
+                      </div>
+                      {touched?.password && errors?.password && (
+                        <ErrorMessage
+                          name="password"
+                          component="div"
+                          className="text-red-500 font-bold mt-1"
+                        />
+                      )}
+                      <div className={`mt-3 ${locale === "en" ? "text-left" : "text-right"}`}>
+                        <button className="text-blue-600 hover :underline">
+                          {t("login.Forgot Password")}
+                        </button>
+                      </div>
+                    </div>
 
-              {/* Sign In */}
-              <button className="w-full h-15 rounded-2xl mt-6 text-white font-semibold text-xl bg-linear-to-r from-blue-700 to-blue-500 hover:opacity-95 transition cursor-pointer">
-                {t("login.Sign_In")}
-              </button>
+                    {/* Sign In */}
+                    <button className="w-full h-15 rounded-2xl mt-6 text-white font-semibold text-xl bg-linear-to-r from-blue-700 to-blue-500 hover:opacity-95 transition cursor-pointer">
+                      {t("login.Sign_In")}
+                    </button>
+                  </form>
+                </>)}
+
+              </Formik>
 
               {/* Sign Up */}
               <div className="text-center mt-8">
