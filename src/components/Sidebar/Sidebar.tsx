@@ -8,15 +8,16 @@ import layoutLinks from './LayoutMenuData';
 import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
 import { TiMinus } from 'react-icons/ti';
 import { GraduationCap } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 
 export default function Sidebar() {
   const [activeLink, setActiveLink] = useState<string>("/");
   const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({});
   const links = layoutLinks;
-    const router = useRouter();
-
+  const router = useRouter();
+  const pathname = usePathname();
+  const lang = pathname.split("/")[1] || "ar";
   const toggleMenu = (id: string) => {
     setOpenSubmenus(prev => {
       const isOpen = !!prev[id];
@@ -46,10 +47,10 @@ export default function Sidebar() {
   };
   return (
     <React.Fragment>
-      <aside className="Sidebar fixed top-0 right-0 bottom-0 z-50 p-2.5  font-bold text-xl bg- blue-900 "
+      <aside className={`Sidebar fixed top-0 right -0 bottom-0 z-50 p-2.5  font-bold text-xl bg- blue-900 ${lang === "ar" ? "right-0": "left-0" } `}
         style={{ 
           width: "calc(100% - 82.33333%)",
-        
+          
           background:
           "linear-gradient(180deg,#001a4d 0%,#003b9e 100%)",
         }}

@@ -51,7 +51,7 @@ const links: LinkType[] = [
       {
         id: "sales",
         label: "Sales",
-        link: "/login"
+        link: "/sales"
       },
     ].filter(Boolean),
   },

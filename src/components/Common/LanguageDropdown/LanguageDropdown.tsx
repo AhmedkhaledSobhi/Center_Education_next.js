@@ -7,6 +7,7 @@ type Language = {
 };
 import en from "@/assets/images/flags/us.svg"
 import ar from "@/assets/images/flags/eg.svg"
+import { usePathname, useRouter } from 'next/navigation';
 
 const languages: Record<string, Language> = {
   en: { label: "English", flag: en },
@@ -14,16 +15,28 @@ const languages: Record<string, Language> = {
 };
 
 export default function LanguageDropdown() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState("ar");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const currentLang = pathname.split("/")[1] || "ar";
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const changeLanguage = (lang: string) => {
     setSelectedLang(lang);
+
+    const segments = pathname.split("/");
+
+    // استبدال اللغة الحالية باللغة الجديدة
+    segments[1] = lang;
+
+    const newPath = segments.join("/");
+
+    router.push(newPath);
+
     setIsOpen(false);
-    console.log("Language changed to:", lang);
   };
 
   // Close dropdown on outside click
@@ -63,7 +76,7 @@ export default function LanguageDropdown() {
                 <button
                   key={key}
                   onClick={() => changeLanguage(key)}
-                  className={`flex items-center w-full px-4 py-2 text-sm text-blue-700 ${selectedLang === key ? "font-bold" : "text-gray-700"
+                  className={`flex items-center w-full px-4 py-2 text-sm text-blue-700 ${currentLang === key ? "font-bold" : "text-gray-700"
                     } hover:bg-gray-100`}
                 >
                   <Image
