@@ -65,8 +65,8 @@ export default async function RootLayout({
     // redirect("/dashboard");
   }
   return (
-    <html lang={params.lang}>
-      <body>
+    <html lang={params.lang} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <Toaster
           position="top-center"
           richColors
