@@ -1,4 +1,43 @@
 {
+  "register": {
+    "new_account_Centers_Education": "Create a new account Centers Education",
+    "title": "Creat Your Account",
+    "seb_Title": "join Center Academy and start your learning journey",
+    "Sign_In": "Sign In",
+    "Create_Account": "Create Account",
+    "Already_have_an_account": "Already have an account?",
+    "I_agree": "I agree",
+    "Terms_Conditions": "Terms and Conditions",
+
+
+    "first_Name": "First Name",
+    "last_Name": "Last Name",
+    "Email_Address": "Email Address",
+    "phone": "Phone",
+    "password": "Password",
+    "confirm_Password": "Confirm Password",
+    "age": "Age",
+    "address": "Address",
+    "Account_type": "Account type",
+
+    "Admin": "Admin",
+    "Teacher": "Teacher",
+    "Student": "Student",
+    "Employee": "Employee",
+    "Assistant": "Assistant",
+
+    "EmailIncorrect": "Invalid email address",
+    "EmailRequired": "Email address required",
+    "mobileNumberValidation": "Verify mobile number",
+    "enterSaudiCorrectNumber": "Enter correct phone number",
+    "PasswordDoesNotmatch": "Password not matched",
+    "passwordValidation": "Verify password",
+    "PasswordConfirmationRequired": "Password confirmation required",
+    "passwordMinLength": "Minimum password length (6)",
+
+    
+    "": ""
+  },
   "login": {
     "Welcome_Back": "Welcome Back",
     "Continue_to_Center_Education": "Sign in to continue to Center Education",
@@ -34,12 +73,35 @@
 
     "": ""
   },
+  "SidebarMenu": {
+    "Dashboard": "Dashboard",
+    "Main": "Main",
+    "Orders": "Orders",
+    "Sales": "Sales",
+    "Setting": "Setting"
+  },
   "HomePage": {
     "title": "Welcome",
     "description": "This is home page"
   },
   "common": {
     "Enter": "Enter",
+    "required": "Required",
+
+    "Back": "Back",
+    "placeholder": "....",
+    "enter": "Enter",
+    "Select": "Select",
     "": ""
+  },
+  "ProfileDropdown": {
+    "Welcome": "Welcome",
+    "Profile": "Profile",
+    "UpgradesAndSubscriptions": "Upgrades and Subscriptions",
+    "changePassword": "Change Password",
+    "Help": "Help",
+    "accountSettings": "Account Settings",
+    "Logout": "Logout",
+    "Settings": "Settings"
   }
 }

@@ -2,7 +2,7 @@ import { GraduationCap } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer dir='ltr' className="pt- 4">
+    <footer dir='ltr' className="pt-3 4">
       <div className="flex flex-col items-center gap-3">
         <div className="flex items-center gap-3 text-gray-500">
           <GraduationCap

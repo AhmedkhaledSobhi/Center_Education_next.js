@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import {
   BookOpen,
+  Ellipsis,
   Eye,
   EyeOff,
   Globe,
@@ -22,6 +23,8 @@ import {LOGIN, PROFILES} from "@/helpers/url_helper"
 import { ErrorMessage, Formik } from 'formik';
 import * as Yup from "yup";
 import GuestGuard from "@/Auth/GuestGuard";
+import ButtonLoader from "@/components/ButtonLoader/ButtonLoader";
+import { hasEmptyValue } from "@/helpers";
 
 export default function LoginPage() {
   const t = useTranslations();
@@ -141,7 +144,7 @@ export default function LoginPage() {
             {/* Form */}
             <div className="flex-1 flex items-center justify-center py-6 pb-0">
               <div className="w-full max-w-xl bg-white rounded-3xl shadow-sm px-10 py-4">
-                <div className="text-center mb-8">
+                <div className="text-center mb-5">
                   <h4 className="text-5xl font-bold text-[#081b4b] mb-4">
                     {t("login.Welcome_Back")}!
                   </h4>
@@ -178,11 +181,8 @@ export default function LoginPage() {
                       await login(payload);
                     } catch (err) {
                       // toast.error(err, {
-                      //   position: "top-center",
                       //   hideProgressBar: false,
                       //   autoClose: 3000,
-                      //   progress: undefined,
-                      //   toastId: "",
                       // });
                     } finally {
                       setLoading(false);
@@ -199,7 +199,6 @@ export default function LoginPage() {
                     isSubmitting,
                     setFieldValue,
                     resetForm,
-
                   }) => (<>
                     <form
                       onSubmit={handleSubmit}
@@ -209,16 +208,13 @@ export default function LoginPage() {
                         }
                       }}
                     >
-
                       {/* Email */}
                       <div className="mb-5">
                         <label className="block mb-3 font-medium">
                           {t("login.Email_Address")}
                         </label>
-
-                        <div className="flex items-center border rounded-2xl px-4 h-15">
+                        <div className="flex items-center border rounded-2xl px-4 h-12.5">
                           <Mail className="text-gray-400" />
-
                           <input
                             name="email"
                             value={values.email}  
@@ -247,10 +243,8 @@ export default function LoginPage() {
                         <label className="block mb-2 font-medium">
                           {t("login.Password")}
                         </label>
-
-                        <div className="flex items-center border rounded-2xl px-4 h-15">
+                        <div className="flex items-center border rounded-2xl px-4 h-12.5">
                           <Lock className="text-gray-400" />
-
                           <input
                             name="password"
                             value={values.password}
@@ -281,27 +275,33 @@ export default function LoginPage() {
                           </button>
                         </div>
                       </div>
-
                       {/* Sign In */}
-                      <button className="w-full h-15 rounded-2xl mt-6 text-white font-semibold text-xl bg-linear-to-r from-blue-700 to-blue-500 hover:opacity-95 transition cursor-pointer">
-                        {t("login.Sign_In")}
+                      <button 
+                        type="submit"
+                        disabled={
+                          loading ||
+                          hasEmptyValue(values)
+                        }
+                        className="w-full h-12.5 flex items-center justify-center rounded-2xl mt-4 -6 text-white font-semibold text-xl bg-linear-to-r from-blue-700 to-blue-500 hover:opacity-95 transition cursor-pointer"
+                      >
+                        {loading ? <ButtonLoader height={25} width={30} /> : t("login.Sign_In")}
                       </button>
                     </form>
                   </>)}
-
                 </Formik>
 
                 {/* Sign Up */}
-                <div className="text-center mt-8">
+                <div className="text-center mt-4 -8">
                   <span className="text-gray-600">
                     {t("login.Don_t_have_an_account")}
                   </span>
-
-                  <button className="ml-2 text-blue-600 font-semibold hover:underline"
+                  <a
+                    href="/register"
+                    className="ml-2 text-blue-600 font-semibold hover:underline"
                     style={{ marginInlineStart: "calc(var(--spacing) * 2)"}}
                   >
                     {t("login.Sign_Up")}
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

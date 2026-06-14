@@ -20,7 +20,7 @@ export type LinkType = {
 const links: LinkType[] = [
   {
     id: "dashboards",
-    label: "Dashboard",
+    label: "SidebarMenu.Dashboard",
     icon: <BiCategory className='text-xl'/>,
     link: "/#",
     click: function (e) {
@@ -28,43 +28,47 @@ const links: LinkType[] = [
     },
     subItems: [
       {
-        id: "dashboard ",
-        label: "Dashboard",
+        id: "Main ",
+        label: "SidebarMenu.Main",
         link: "/dashboard"
       },
     ].filter(Boolean),
   },
   {
     id: "orders",
-    label: "Orders",
+    label: "SidebarMenu.Orders",
     icon: <CiHome className='text-xl' />,
     link: "",
     click: function (e) {
       e.preventDefault();
     },
     subItems: [
-      {
-        id: "order",
-        label: "orders",
-        link: "/orders"
-      },
+      // {
+      //   id: "order",
+      //   label: "SidebarMenu.orders",
+      //   link: "/orders"
+      // },
       {
         id: "sales",
-        label: "Sales",
+        label: "SidebarMenu.Sales",
         link: "/sales"
       },
     ].filter(Boolean),
   },
   {
-    id: "products",
-    label: "Products",
+    id: "Setting",
+    label: "SidebarMenu.Setting",
     icon: <IoMdSettings className='text-xl' />,
     link: "/register",
     click: function (e) {
       e.preventDefault();
     },
     subItems: [
-      
+      {
+        id: "sales",
+        label: "SidebarMenu.Sales",
+        link: "/sales"
+      },
     ].filter(Boolean),
   },
 ];

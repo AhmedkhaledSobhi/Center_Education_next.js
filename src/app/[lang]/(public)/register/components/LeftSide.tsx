@@ -10,7 +10,7 @@ export default function LeftSide() {
   return (
     <React.Fragment>
       <div
-        className="lg:w-[35%] text-white p-10 flex flex-col justify-between"
+        className="lg:w-[30%] text-white p-10 flex flex-col justify-between"
         style={{
           background:
             "linear-gradient(180deg,#001a4d 0%,#003b9e 100%)",

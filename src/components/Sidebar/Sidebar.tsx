@@ -9,6 +9,7 @@ import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
 import { TiMinus } from 'react-icons/ti';
 import { GraduationCap } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 
 export default function Sidebar() {
@@ -17,6 +18,7 @@ export default function Sidebar() {
   const links = layoutLinks;
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations();
   const lang = pathname.split("/")[1] || "ar";
   const toggleMenu = (id: string) => {
     setOpenSubmenus(prev => {
@@ -60,7 +62,7 @@ export default function Sidebar() {
           {/* <Link href="/" className='flex items-center gap-2'>
             <Image src={MySVG.logoLight} alt="Logo" width={170} height={170} />
           </Link> */}
-          <div className="flex items-center gap-4 mb-0"
+          <div dir="rtl" className="flex items-center gap-4 mb-0"
             onClick={() => { router.push('/') }}
           >
             <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center">
@@ -93,14 +95,15 @@ export default function Sidebar() {
               }}
             >
               <div className="flex items-center justify-between gap-2 text-white cursor-pointer  ">
-                <div className='flex items-center gap-2  text-[22px] font-bold'>
+                <div className='flex items-center gap-2 font -bold'>
                   {item.icon}
-                  <span className='hover:text-blue-700 cursor-pointer transition-colors text-[18px]'>
+                  <span className='hover:text-blue-700 cursor-pointer transition-colors text-[16px]'>
                     {!item.subItems?.length ? (
                       <Link href={`${item.link}`}>
-                        {item.label}
+                          {t(item.label)}
                       </Link>
-                    ) : item.label}
+                      ) : t(item.label)
+                    }
                   </span>
                 </div>
 
@@ -110,15 +113,20 @@ export default function Sidebar() {
                   ) : <FaChevronLeft /> }
                 </div>
               </div>
-              <ul className={`pr-4 mt-2  ${openSubmenus[item.id] ? "block" : "hidden"}`}>
+              <ul className={`pr-0 mt-2  ${openSubmenus[item.id] ? "block" : "hidden"}`}>
                 {item.subItems?.map((subItem, subIndex) => (
-                  <li key={subIndex} className='text-white cursor-pointer flex items-center' style={{ fontSize: "medium"}}>
+                  <li key={subIndex} className='text-white cursor-pointer flex items-center' 
+                    style={{
+                      fontSize: "medium",
+                      marginInlineStart: "5px",
+                    }}
+                  >
                     <TiMinus />
                     <Link href={`${subItem.link}`}
                       className={`p-2 hover:text-blue-700 transition-colors ${activeLink === subItem.link ? "text-blue-700" : "text-white"}`}
                       onClick={(e) => handleSubLinkClick(e, item.id, subItem.link)}
                     >
-                      {subItem.label}
+                      {t(subItem.label)}
                     </Link>
                   </li>
                 ))}

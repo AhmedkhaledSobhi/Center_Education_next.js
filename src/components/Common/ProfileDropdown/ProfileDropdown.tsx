@@ -8,20 +8,21 @@ import DropdownItem from './DropdownItem';
 import avatar1 from "../../../assets/images/user-avatar.png";
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import { performLogoutCleanup } from '@/helpers/logoutCleanup';
 
 
 export default function ProfileDropdown() {
   const [userInfo, setUserInfo] = useState({
     avatar: "",
     Point: "",
-    first_name: "Ahmed",
+    first_name: "",
     last_name: "khaled"
   });
-  
+
   const t = useTranslations();
   const router = useRouter();
-    const locale = useLocale();
-  
+  const locale = useLocale();
+
   const [open, setOpen] = useState<boolean>(false);
 
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -35,9 +36,8 @@ export default function ProfileDropdown() {
     //     }
     //   })
     //   .catch((error) => {});
-    // performLogoutCleanup();
-    
-    // nav("/login");
+
+    performLogoutCleanup();
     router.replace("/login");
   };
 
@@ -94,7 +94,11 @@ export default function ProfileDropdown() {
 
         {/* Dropdown */}
         {open && (
-          <div className="absolute left-1 mt-2 w-50 bg-white rounded-xl shadow-lg z-50">
+          <div className="absolute mt-2 w-50 bg-white rounded-xl shadow-lg z-50"
+            style={{
+              [locale === "ar" ? "left" : "right"]: "0.25rem"
+            }}
+          >
             {/* Welcome */}
             <div className="flex items-center  gap-2 p-3 border-b  border-gray-300">
               <Image src={MySVG.Point} alt="point" width={25} height={25} />

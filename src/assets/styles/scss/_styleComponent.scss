@@ -11,7 +11,7 @@
   overflow: hidden;
   // transform: rotate(-45deg);
   // left: -15px;
-  top: 5px !important;
+  top: 3px !important;
   background: $primary;
   text-align: center;
   color: white;
@@ -20,15 +20,24 @@
   width: 50px;
   padding: 1px 0;
 }
-html[lang="ar"] {
-  .soon-container {
-    left: -15px !important;
-    transform: rotate(-50deg) !important;
-  }
-};
-html[lang="en"] {
-  .soon-container {
-    right: -15px !important;
-    transform: rotate(45deg) !important;
-  }
-};
+// html[lang="ar"] {
+//   .soon-container {
+//     left: -15px !important;
+//     transform: rotate(-50deg) !important;
+//   }
+// };
+// html[lang="en"] {
+//   .soon-container {
+//     right: -15px !important;
+//     transform: rotate(45deg) !important;
+//   }
+// };
+
+[dir="rtl"] .soon-container {
+  left: -15px !important;
+  transform: rotate(-50deg) !important;
+}
+[dir="ltr"] .soon-container {
+  right: -13px !important;
+  transform: rotate(45deg) !important;
+}
