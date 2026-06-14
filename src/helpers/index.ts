@@ -11,7 +11,7 @@ function hasEmptyValue(obj: Record<string, unknown>): boolean {
       (typeof val === "object" && Object.keys(val).length === 0)
   );
 }
-export function hasEmptyValueV2(obj: unknown) {
+function hasEmptyValueV2(obj: unknown) {
   if (!obj || typeof obj !== "object") return true;
 
   return Object.values(obj as Record<string, unknown>).some((val) => {
@@ -33,5 +33,6 @@ function usePageTitle(title: string) {
 
 export {
   hasEmptyValue,
+  hasEmptyValueV2,
   usePageTitle,
 }
