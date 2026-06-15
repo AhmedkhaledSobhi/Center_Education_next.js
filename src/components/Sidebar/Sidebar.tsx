@@ -1,7 +1,7 @@
 "use client";
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MySVG from "../../SVG/MySVG";
 import Link from 'next/link';
 import layoutLinks from './LayoutMenuData';
@@ -47,17 +47,19 @@ export default function Sidebar() {
     newState[parentId] = true; // إبقاء الـ submenu الحالي مفتوح
     setOpenSubmenus(newState);
   };
+
+  // __________________
+
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 576);
+
+  useEffect(() => {
+    const handleResize = () => setIsSmallScreen(window.innerWidth < 576);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <React.Fragment>
-      <aside className={`Sidebar fixed top-0 right -0 bottom-0 z-50 p-2.5  font-bold text-xl bg- blue-900 ${lang === "ar" ? "right-0": "left-0" } `}
-        style={{ 
-          width: "calc(100% - 82.33333%)",
-          
-          background:
-          "linear-gradient(180deg,#001a4d 0%,#003b9e 100%)",
-        }}
-
-      >
+      <aside className={`Sidebar fixed top-0 right -0 bottom-0 z-50 p-2.5  font-bold text-xl bg- blue-900 ${lang === "ar" ? "right-0": "left-0" } `}>
         <div className='md-[h-20] text-white top-0 right-0 left- 0  flex items-center justify-center mt-3.5'>
           {/* <Link href="/" className='flex items-center gap-2'>
             <Image src={MySVG.logoLight} alt="Logo" width={170} height={170} />
@@ -83,7 +85,6 @@ export default function Sidebar() {
         <nav className="p-4 flex flex-col gap-2 mt-3.5 overflow-y-auto scrollbar-none "
          style={{ height: "calc(100vh - 80px)" }}
         >
-    
           {links?.map((item) => (
             <div key={item.id} 
               className="px-2 my-2"
@@ -94,8 +95,8 @@ export default function Sidebar() {
                 }
               }}
             >
-              <div className="flex items-center justify-between gap-2 text-white cursor-pointer  ">
-                <div className='flex items-center gap-2 font -bold'>
+              <div className="flex items-center justify-between gap-2 text-white cursor-pointer">
+                <div className='flex items-center gap-2'>
                   {item.icon}
                   <span className='hover:text-blue-700 cursor-pointer transition-colors text-[16px]'>
                     {!item.subItems?.length ? (

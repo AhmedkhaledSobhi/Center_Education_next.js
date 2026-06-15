@@ -1,15 +1,19 @@
-import BreadCrumb from '@/components/BreadCrumb/BreadCrumb'
 import React from 'react'
+import BreadCrumb from '@/components/BreadCrumb/BreadCrumb'
+import { useTranslations } from 'next-intl';
 
 export default function Dashboard() {
+  const t = useTranslations();
+  
   return (
     <React.Fragment>
       <div className='w-full'>
 
         <BreadCrumb
-          title={"المستخدمين"}
-          pageTitle={"common"}
-          subTitle={"main"}
+          title={t("HomePage.Users")}
+          subTitle={t("SidebarMenu.Dashboard")}
+          pageTitle={t("HomePage.title")}
+          subPageTitle={t("HomePage.Users")}
         />
         <h1>Welcome to the Home Page</h1>
         <p>This is the main content of the home page.</p>

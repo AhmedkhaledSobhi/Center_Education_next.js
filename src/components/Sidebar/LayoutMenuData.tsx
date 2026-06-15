@@ -21,7 +21,7 @@ const links: LinkType[] = [
   {
     id: "dashboards",
     label: "SidebarMenu.Dashboard",
-    icon: <BiCategory className='text-xl'/>,
+    icon: <BiCategory size={20} strokeWidth={1} />,
     link: "/#",
     click: function (e) {
       e.preventDefault();
@@ -37,7 +37,7 @@ const links: LinkType[] = [
   {
     id: "orders",
     label: "SidebarMenu.Orders",
-    icon: <CiHome className='text-xl' />,
+    icon: <CiHome size={20} strokeWidth={1} />,
     link: "",
     click: function (e) {
       e.preventDefault();
@@ -58,7 +58,7 @@ const links: LinkType[] = [
   {
     id: "Setting",
     label: "SidebarMenu.Setting",
-    icon: <IoMdSettings className='text-xl' />,
+    icon: <IoMdSettings size={20} strokeWidth={1} />,
     link: "/register",
     click: function (e) {
       e.preventDefault();

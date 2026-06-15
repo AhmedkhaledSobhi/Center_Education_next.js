@@ -11,7 +11,6 @@
     "I_agree": "أوافق على",
     "Terms_Conditions": "الشروط والأحكام",
 
-
     "first_Name": "الاسم الاول",
     "last_Name": "الاسم الاخير",
     "Email_Address": "البريد الإلكتروني",
@@ -40,6 +39,7 @@
     "": ""
   },
   "login": {
+    "Login_to_Centers_Education": "تسجيل دخول في Centers Education",
     "Welcome_Back": "مرحباً بعودتك",
     "Continue_to_Center_Education": "سجّل الدخول للمتابعة إلى Center Education",
     "Email_Address": "البريد الإلكتروني",
@@ -84,7 +84,8 @@
   },
   "HomePage": {
     "title": "مرحباً",
-    "description": "هذه هي الصفحة الرئيسية"
+    "description": "هذه هي الصفحة الرئيسية",
+    "Users": "المستخدمين"
   },
   "common": {
     "Enter": "أدخل",

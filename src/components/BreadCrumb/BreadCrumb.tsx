@@ -1,3 +1,5 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useLocale } from 'next-intl'
 import Link from 'next/link'
 import React from 'react'
 type BreadCrumbProps = {
@@ -12,48 +14,71 @@ type BreadCrumbProps = {
   pageTitleLink?: string
 }
 
-export default function BreadCrumb(
-{
-    title,
-    subTitle,
-    pageTitle,
+export default function BreadCrumb({
+  title,
+  subTitle,
+  pageTitle,
 
-    subPageTitle,
-    subTitleLink,
+  subPageTitle,
+  subTitleLink,
 
-    subPageTitleLink,
-    pageTitleLink,
+  subPageTitleLink,
+  pageTitleLink,
 }: BreadCrumbProps
 ) {
+  const locale = useLocale();
+  const Icon = locale === "ar" ? ChevronLeft : ChevronRight;
+
   return (
     <React.Fragment>
       <div className='p-1 2 px-4 border-b-2 border-b-gray-200 mb-2.5'>
         <h5 className="text-blue-600 text-xl font-bold">{title}</h5>
 
-        <div className="breadcrumbs">
-          <ul >
+        <div dir={locale === "ar" ? "ltr" : "rtl"} className="mt-2">
+          <ol className="flex items-center flex-wrap text -sm text-gray-700 rtl:flex-row-reverse">
             {subTitle && (
-              <li className="breadcrumb-item ">
-                <Link href={subTitleLink ?? "#"}>{subTitle}</Link>
+              <li className={`flex items-center ${!pageTitle && "font-bold"}`}>
+                {pageTitle && (
+                  <Icon size={17} color="gray" strokeWidth={2} className='mx-1' />
+                )}
+
+                <Link 
+                  href={subTitleLink ?? "#"} 
+                  className="hover:text-blue-600"
+                >
+                  {subTitle}
+                </Link>
               </li>
             )}
+
             {pageTitle && (
               <li
-                className={
-                  subPageTitle
-                    ? "breadcrumb-item  "
-                    : "breadcrumb-item active fw-bold"
-                }
+                className={`flex items-center ${!subPageTitle && "font-bold"}`}
               >
-                <Link href={pageTitleLink ?? "#"}>{pageTitle}</Link>
+                {subPageTitle && (
+                  <Icon size={17} color="gray" strokeWidth={2} className='mx-1' />
+                )}
+
+                <Link 
+                  href={pageTitleLink ?? "#"} 
+                  className="hover:text-blue-600"
+                >
+                  {pageTitle}
+                </Link>
               </li>
             )}
+
             {subPageTitle && (
-              <li className="breadcrumb-item active fw-bold">
-                <Link href={subPageTitleLink ?? "#"}>{subPageTitle}</Link>
+              <li className="breadcrumb-item  flex items-center active font-bold ">
+                <Link
+                  href={subPageTitleLink ?? "#"}
+                  className="hover:text-blue-600"
+                >
+                  {subPageTitle}
+                </Link>
               </li>
             )}            
-          </ul>
+          </ol>
         </div>
       </div>
     </React.Fragment>

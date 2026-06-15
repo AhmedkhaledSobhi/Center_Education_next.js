@@ -24,10 +24,12 @@ import { ErrorMessage, Formik } from 'formik';
 import * as Yup from "yup";
 import GuestGuard from "@/Auth/GuestGuard";
 import ButtonLoader from "@/components/ButtonLoader/ButtonLoader";
-import { hasEmptyValue } from "@/helpers";
+import { hasEmptyValue, usePageTitle } from "@/helpers";
+import Link from "next/link";
 
 export default function LoginPage() {
   const t = useTranslations();
+  usePageTitle(t("login.Login_to_Centers_Education"));
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -104,6 +106,7 @@ export default function LoginPage() {
             const response = await axios.get(`${BASE_URL}${PROFILES}`, { params: { id }, });
             localStorage.setItem("myInfo", JSON.stringify(response?.data?.data));
             localStorage.setItem("loginType", JSON.stringify(response?.data?.data?.role));
+            setLoginType(response?.data?.data?.role);
             router.replace("/dashboard");
           } catch (error) {
             // console.error(error.response?.data || error.message);
@@ -216,16 +219,17 @@ export default function LoginPage() {
                         <div className="flex items-center border rounded-2xl px-4 h-12.5">
                           <Mail className="text-gray-400" />
                           <input
+                            type="email"
                             name="email"
-                            value={values.email}  
                             id="email"
+                            title={t("login.Email_Address")}
+                            value={values.email}  
                             onChange={(e) =>
                               setFieldValue("email", e.target.value)
                             }
                             onBlur={handleBlur}    
-                            type="email"
                             placeholder={`${t("common.Enter")} ${t("login.Email_Address")}`}
-                            className="w-full ml-3 outline-none bg-transparent"
+                            className="w-full outline-none bg-transparent"
                             style={{ marginInlineStart: "calc(var(--spacing) * 3)"}}
                           />
                         </div>
@@ -247,13 +251,16 @@ export default function LoginPage() {
                           <Lock className="text-gray-400" />
                           <input
                             name="password"
+                            id="password"
                             value={values.password}
+                            title={t("login.Password")}
+                            autoComplete="current-password"
                             onChange={(e) =>
                               setFieldValue("password", e.target.value)
                             }
                             type={showPassword ? "text" : "password"}
                             placeholder={`${t("common.Enter")} ${t("login.Password")}`}
-                            className="w-full ml -3 outline-none bg-transparent"
+                            className="w-full outline-none bg-transparent"
                             style={{ marginInlineStart: "calc(var(--spacing) * 3)" }}
                           />
                           {showPassword ? (
@@ -270,9 +277,12 @@ export default function LoginPage() {
                           />
                         )}
                         <div className={`mt-3 ${locale === "en" ? "text-left" : "text-right"}`}>
-                          <button className="text-blue-600 hover :underline">
+                          <label
+                            htmlFor="terms_conditions"
+                            className={`cursor-pointer text-blue-600 hover:underline`}
+                          >
                             {t("login.Forgot Password")}
-                          </button>
+                          </label>
                         </div>
                       </div>
                       {/* Sign In */}
@@ -295,13 +305,13 @@ export default function LoginPage() {
                   <span className="text-gray-600">
                     {t("login.Don_t_have_an_account")}
                   </span>
-                  <a
+                  <Link
                     href="/register"
                     className="ml-2 text-blue-600 font-semibold hover:underline"
                     style={{ marginInlineStart: "calc(var(--spacing) * 2)"}}
                   >
                     {t("login.Sign_Up")}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

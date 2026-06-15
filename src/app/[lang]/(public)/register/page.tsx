@@ -19,6 +19,7 @@ import PhoneSelect from "@/components/PhoneSelect/PhoneSelect";
 
 import configService from "@/helpers/config"
 import { PROFILES, REGISTER } from "@/helpers/url_helper";
+import Link from "next/link";
 
 
 type PhoneCodeItem = {
@@ -611,7 +612,7 @@ export default function RegisterPage() {
                           || !isChecked
                           || hasEmptyValueV2(values)
                         }
-                        className="w-full h-12.5 flex items-center justify-center rounded-2xl mt-4 -6 text-white font-semibold text-xl bg-linear-to-r from-blue-700 to-blue-500 hover:opacity-95 transition cursor-pointer"
+                        className="w-full h-12 flex items-center justify-center rounded-2xl mt-4 -6 text-white font-semibold text-xl bg-linear-to-r from-blue-700 to-blue-500 hover:opacity-95 transition cursor-pointer"
                       >
                         {loading ? <ButtonLoader height={25} width={30} /> : t("register.Create_Account")}
                       </button>
@@ -624,13 +625,13 @@ export default function RegisterPage() {
                   <span className="text-gray-600">
                     {t("register.Already_have_an_account")}
                   </span>
-                  <a
+                  <Link
                     href="/login"
                     className="ml-2 text-blue-600 font-semibold hover:underline"
                     style={{ marginInlineStart: "calc(var(--spacing) * 2)"}}
                   >
                     {t("register.Sign_In")}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

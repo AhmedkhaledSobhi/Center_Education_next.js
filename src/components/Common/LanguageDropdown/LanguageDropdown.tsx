@@ -5,37 +5,32 @@ type Language = {
   label: string;
   flag: string;
 };
-import en from "@/assets/images/flags/us.svg"
-import ar from "@/assets/images/flags/eg.svg"
+import en from "@/assets/images/flags/us.svg";
+import ar from "@/assets/images/flags/eg.svg";
+import it from "@/assets/images/flags/it.svg"
 import { usePathname, useRouter } from 'next/navigation';
 
 const languages: Record<string, Language> = {
   en: { label: "English", flag: en },
   ar: { label: "العربية", flag: ar },
+  // it: { label: "Italiano", flag: it },
 };
 
 export default function LanguageDropdown() {
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("ar");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const currentLang = pathname.split("/")[1] || "ar";
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const changeLanguage = (lang: string) => {
-    setSelectedLang(lang);
-
     const segments = pathname.split("/");
-
     // استبدال اللغة الحالية باللغة الجديدة
     segments[1] = lang;
-
     const newPath = segments.join("/");
-
     router.push(newPath);
-
     setIsOpen(false);
   };
 
@@ -62,8 +57,8 @@ export default function LanguageDropdown() {
             className="flex items-center justify-center overflow-hidden rounded-[1.25rem]  cursor-pointer"
           >
             <Image
-              src={languages[selectedLang].flag}
-              alt={languages[selectedLang].label}
+              src={languages[currentLang].flag}
+              alt={languages[currentLang].label}
               width={20}
               height={20}
               className="object-cover"

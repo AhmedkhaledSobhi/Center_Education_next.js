@@ -2,6 +2,7 @@
 // @import 'variables';
 @use 'variables' as *;
 @use "styleComponent" as *;
+@use "styleComponentSidebar" as *;
 // ____________________________
 
 
@@ -37,7 +38,15 @@
 // _____________/ End Scrollbar Sidebar \_____________
 
 // ____________________________
-.Sidebar{
-  background-color: $sidebar-bg-color;
-  
-}
+// .Sidebar{
+//   // background-color: $sidebar-bg-color;
+//   background: $sidebar-bg-color-2;
+//   width: calc(100% - 82.33333%);
+// }
+
+
+// @media only screen and (max-width: 600px) {
+//   .Sidebar{
+//     width: calc(100% - 20.33333%) !important;
+//   }
+// }

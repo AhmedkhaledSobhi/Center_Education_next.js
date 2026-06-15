@@ -39,6 +39,7 @@
     "": ""
   },
   "login": {
+    "Login_to_Centers_Education": "Log in to Centers Education",
     "Welcome_Back": "Welcome Back",
     "Continue_to_Center_Education": "Sign in to continue to Center Education",
     "Email_Address": "Email Address",
@@ -82,7 +83,8 @@
   },
   "HomePage": {
     "title": "Welcome",
-    "description": "This is home page"
+    "description": "This is home page",
+    "Users": "Users"
   },
   "common": {
     "Enter": "Enter",
