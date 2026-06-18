@@ -43,11 +43,26 @@ const links: LinkType[] = [
       e.preventDefault();
     },
     subItems: [
-      // {
-      //   id: "order",
-      //   label: "SidebarMenu.orders",
-      //   link: "/orders"
-      // },
+      {
+        id: "order",
+        label: "SidebarMenu.Sales",
+        link: "/orders"
+      },
+      {
+        id: "order",
+        label: "SidebarMenu.Sales",
+        link: "/orders"
+      },
+      {
+        id: "order",
+        label: "SidebarMenu.Sales",
+        link: "/orders"
+      },
+      {
+        id: "order",
+        label: "SidebarMenu.Sales",
+        link: "/orders"
+      },
       {
         id: "sales",
         label: "SidebarMenu.Sales",

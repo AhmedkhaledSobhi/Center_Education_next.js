@@ -6,10 +6,17 @@
   width: calc(100% - 82.33333%);
 }
 
+.sidebar-open{
+  width: calc(100% - 82.33333%);
+}
+.sidebar-close{
+  width: calc(100% - 94.33333%);
+}
 
 @media only screen and (max-width: 600px) {
   .Sidebar{
     width: calc(100% - 20.33333%) !important;
+    // width: calc(100% - 82.33333%) !important;
     // height: calc(100% - 0.33333%) !important ;
     // margin-top: 60px;
 

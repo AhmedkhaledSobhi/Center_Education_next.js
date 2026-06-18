@@ -1,12 +1,10 @@
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
-import Sidebar from "@/components/Sidebar/Sidebar";
 import { useLocale } from "next-intl";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { getLocale } from "next-intl/server";
 import AuthGuard from "@/Auth/AuthGuard";
+import ProtectedLayoutClient from "./ProtectedLayoutClient";
 
 type Props = {
   children: ReactNode;
@@ -27,28 +25,44 @@ export default async function ProtectedLayout({ children }: Props) {
   // if (!token) {
   //   redirect("/login");
   // }
+//  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 576);
 
+//   useEffect(() => {
+//     const handleResize = () => setIsSmallScreen(window.innerWidth < 576);
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
   return (
     <AuthGuard>
-      <div 
-        dir={locale === "ar" ? "rtl" : "ltr"}
-        className="min-h-full flex flex-col"
-      >
-        <div className="flex justify-end ">
-          <Sidebar/>
-          <div className="bg- amber-400"
-            style={{width: "calc(100% - 17.9999%)"}}
-          >
-            <Header/>
-            <main className="pt-12">
-              <div className="min-h-[calc(100vh-91px)] py-3.5 px-0">
-                {children}
-              </div>
-              <Footer/>
-            </main>
+      <ProtectedLayoutClient locale={locale}>
+        {children}
+        {/* <div 
+          dir={locale === "ar" ? "rtl" : "ltr"}
+          className="min-h-full flex flex-col"
+        >
+          <div className="flex justify-end ">
+            <Sidebar
+              isOpen={sidebarOpen}
+              onClose={() => setSidebarOpen(false)}
+            />
+            <div className="bg- amber-400"
+              style={{width: "calc(100% - 17.9999%)"}}
+            >
+              <Header
+                toggleSidebar={() =>
+                  setSidebarOpen((prev) => !prev)
+                }
+              />
+              <main className="pt-12">
+                <div className="min-h-[calc(100vh-91px)] py-3.5 px-0">
+                  {children}
+                </div>
+                <Footer/>
+              </main>
+            </div>
           </div>
-        </div>
-      </div>
+        </div> */}
+      </ProtectedLayoutClient>
     </AuthGuard>
   ) 
 }
