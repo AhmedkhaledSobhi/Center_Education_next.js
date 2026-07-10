@@ -524,9 +524,9 @@ export default function RegisterPage() {
                               style={{ marginInlineStart: "calc(var(--spacing) * 3)" }}
                             />
                             {showPassword ? (
-                              <EyeOff className="text-gray-400 cursor-pointer" onClick={()=> setShowPassword(!showPassword)}/>
-                            ) : (
                               <Eye className="text-gray-400 cursor-pointer" onClick={()=> setShowPassword(!showPassword)}/>
+                            ) : (
+                              <EyeOff className="text-gray-400 cursor-pointer" onClick={()=> setShowPassword(!showPassword)}/>
                             )}
                           </div>
                           {touched?.password && errors?.password && (
@@ -560,9 +560,9 @@ export default function RegisterPage() {
                               style={{ marginInlineStart: "calc(var(--spacing) * 3)" }}
                             />
                             {showPasswordConfirm ? (
-                              <EyeOff className="text-gray-400 cursor-pointer" onClick={()=> setShowPasswordConfirm(!showPasswordConfirm)}/>
-                            ) : (
                               <Eye className="text-gray-400 cursor-pointer" onClick={()=> setShowPasswordConfirm(!showPasswordConfirm)}/>
+                            ) : (
+                              <EyeOff className="text-gray-400 cursor-pointer" onClick={()=> setShowPasswordConfirm(!showPasswordConfirm)}/>
                             )}
                           </div>
                           {touched?.password_confirmation && errors?.password_confirmation && (
