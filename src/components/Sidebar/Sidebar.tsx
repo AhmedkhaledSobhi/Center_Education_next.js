@@ -177,7 +177,7 @@ export default function Sidebar({ isOpens
                       <Link href={`${subItem.link}`}
                         style={{
                           fontSize: "14px",
-                          fontWeight: "400",
+                          fontWeight: "600",
                           lineHeight: "20px",
                         }}
                         className={`p-2 hover:text-blue-700 transition-colors ${activeLink === subItem.link ? "text-blue-700" : "text-white"}`}

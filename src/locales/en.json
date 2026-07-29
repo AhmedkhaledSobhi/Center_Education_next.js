@@ -105,5 +105,9 @@
     "accountSettings": "Account Settings",
     "Logout": "Logout",
     "Settings": "Settings"
+  },
+  "home": {
+    "Welcome": "Welcome",
+    "Center_Education": "Center_Education is a comprehensive electronic platform for managing educational centers, transforming traditional academic and administrative processes into a smart digital system. It includes student management, teacher management, class scheduling, and attendance tracking, enhancing operational efficiency and improving communication between the administration, parents, and students."
   }
 }

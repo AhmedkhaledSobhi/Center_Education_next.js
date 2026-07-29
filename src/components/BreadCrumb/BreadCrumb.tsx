@@ -31,7 +31,7 @@ export default function BreadCrumb({
 
   return (
     <React.Fragment>
-      <div className='p-2 2 px-4 border-b-[1px] border-b-gray-200 mb-2.5 bg-white'>
+      <div className='p-2 px-4 border-b-[0.5px] border-b-gray-200 mb-2.5 bg-white'>
         <h5 className="text-blue-600 text-xl font-bold">{title}</h5>
 
         <div dir={locale === "ar" ? "ltr" : "rtl"} className="mt-2">

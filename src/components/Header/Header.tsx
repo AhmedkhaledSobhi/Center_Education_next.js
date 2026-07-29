@@ -22,7 +22,7 @@ export default function Header({ isOpen,toggleSidebar }: HeaderProps) {
     }, []);
   return (
     <React.Fragment>
-      <header className="bg-white fixed top-0 z-20 w-full border-b-[1px] 2 border-b-gray-200  "
+      <header className="bg-white fixed top-0 z-20 w-full border-b-[0.5px] 2 border-b-gray-200  "
         style={{
           width: `calc(100% - ${isOpen? "17.9999%": "5.9999%"})`, 
           height: "65px", 
