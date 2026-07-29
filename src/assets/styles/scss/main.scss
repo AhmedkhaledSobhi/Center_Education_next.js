@@ -5,7 +5,34 @@
 @use "styleComponentSidebar" as *;
 // ____________________________
 
+body{
+  background-color: #fafafa ;
+}
+.page-content{
+  // padding: calc(70px + 1.5rem) calc(1.5rem * 0.5) 60px calc(1.5rem * 0.5);
 
+  --vz-gutter-x: 1.5rem;
+  --vz-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(1.5rem * 0.5);
+  padding-left: calc(1.5rem * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+
+  // background-color: #fafafa;
+}
+.Card{
+  background-color: #FFFFFF;
+  border-style: var(--tw-border-style);
+  border-width: 2px;
+  border-color: #FFFFFF;
+  border-radius: 1rem;
+  padding: calc(.25rem * 4);
+  margin: calc(.25rem * 3.5);
+  
+  --tw-shadow: 0 1px var(--tw-shadow-color, #0000000d);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000 ,0 1px #0000000d;
+}
 // _____________/ Start Scrollbar Styles \_____________
 ::-webkit-scrollbar-thumb {
   background-color: $primary;

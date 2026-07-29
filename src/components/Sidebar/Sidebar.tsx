@@ -91,7 +91,7 @@ export default function Sidebar({ isOpens
           </div>
         </div>
 
-        <nav className={`p-4 flex flex-col gap-2 mt-3.5 ${isOpens && "overflow-y-auto"} scrollbar-none`}
+        <nav className={`py-4 px-1 flex flex-col gap-2 mt-3.5 ${isOpens && "overflow-y-auto"} scrollbar-none`}
          style={{ height: "calc(100vh - 80px)" }}
         >
           {links?.map((item) => (
@@ -123,7 +123,12 @@ export default function Sidebar({ isOpens
                 <div className='flex items-center gap-2'>
                   <div className="text-xl">{item.icon}</div>
                   {isOpens && (
-                    <span className='hover:text-blue-700 cursor-pointer transition-colors text-[16px]'>
+                    <span className='hover:text-blue-700 cursor-pointer transition-colors text-[15px]'
+                      style={{
+                        fontWeight: "700",
+                        lineHeight: "20px"
+                      }}
+                    >
                       {!item.subItems?.length ? (
                         <Link href={`${item.link}`}>
                             {t(item.label)}
@@ -170,6 +175,11 @@ export default function Sidebar({ isOpens
                     >
                       <TiMinus />
                       <Link href={`${subItem.link}`}
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: "400",
+                          lineHeight: "20px",
+                        }}
                         className={`p-2 hover:text-blue-700 transition-colors ${activeLink === subItem.link ? "text-blue-700" : "text-white"}`}
                         onClick={(e) => handleSubLinkClick(e, item.id, subItem.link)}
                       >

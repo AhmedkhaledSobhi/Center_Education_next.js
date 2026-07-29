@@ -52,10 +52,10 @@ import { cookies } from "next/headers";
 
 export default async function RootLayout({
   children,
-  params
+  // params
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: string };
+  // params: { lang: string };
 
 }>) {
   const cookieStore = await cookies();
@@ -65,7 +65,10 @@ export default async function RootLayout({
     // redirect("/dashboard");
   }
   return (
-    <html lang={params.lang} suppressHydrationWarning>
+    <html 
+      // lang={params.lang}
+     suppressHydrationWarning
+    >
       <body suppressHydrationWarning>
         <Toaster
           position="top-center"

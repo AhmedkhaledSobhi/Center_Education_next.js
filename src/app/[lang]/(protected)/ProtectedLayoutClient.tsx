@@ -29,7 +29,7 @@ export default function ProtectedLayoutClient({
             />
             <div className=""
               style={{
-                width: `calc(100% - ${sidebarOpen ? "17.9999%" : "6%"})`
+                width: `calc(100% - ${sidebarOpen ? "16.9999%" : "6%"})`
               }}
             >
               <Header
