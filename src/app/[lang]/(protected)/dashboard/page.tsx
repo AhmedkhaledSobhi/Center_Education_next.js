@@ -13,13 +13,13 @@ export default function Dashboard() {
 
   return (
     <React.Fragment>
-      <BreadCrumb
-        title={t("HomePage.Users")}
-        subTitle={t("SidebarMenu.Dashboard")}
-        pageTitle={t("HomePage.title")}
-        subPageTitle={t("HomePage.Users")}
-      />
       <div className="page-content">
+        <BreadCrumb
+          title={t("HomePage.Users")}
+          subTitle={t("SidebarMenu.Dashboard")}
+          pageTitle={t("HomePage.title")}
+          subPageTitle={t("HomePage.Users")}
+        />
         <Card className="w-full my- 1.5">
           <CardContent>
             <div className="flex justify-between items-center">

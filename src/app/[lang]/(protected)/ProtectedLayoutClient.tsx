@@ -2,7 +2,9 @@
 
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import { AppSidebar } from '@/components/Sidebar/AppSidebar';
 import Sidebar from '@/components/Sidebar/Sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import React, { ReactNode, useState } from 'react'
 
 type Props = {
@@ -15,39 +17,54 @@ export default function ProtectedLayoutClient({
   locale,
 }: Props) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const isRtl = locale === "ar";
 
   return (
     <React.Fragment>
-      <div 
-          dir={locale === "ar" ? "rtl" : "ltr"}
-          className="min-h-full flex flex-col"
-        >
-          <div className="flex justify-end ">
-            <Sidebar
-              isOpens={sidebarOpen}
-              onClose={() => setSidebarOpen(false)}
-            />
-            <div className=""
-              style={{
-                width: `calc(100% - ${sidebarOpen ? "16.9999%" : "6%"})`
-              }}
-            >
-              <Header
-                isOpen={sidebarOpen}
+      <SidebarProvider>
+        <AppSidebar side={isRtl ? "right" : "left"} />
+        <main>
+          {/* <Sidebar
+            isOpens={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+          /> */}
+          <Header
+ 
+          />
+          {children}
+          <Footer />
+        </main>
+      </SidebarProvider>
+      {/* <div 
+        dir={locale === "ar" ? "rtl" : "ltr"}
+        className="min-h-full flex flex-col"
+      >
+        <div className="flex justify-end ">
+          <Sidebar
+            isOpens={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+          />
+          <div className=""
+            style={{
+              width: `calc(100% - ${sidebarOpen ? "16.9999%" : "6%"})`
+            }}
+          >
+            <Header
+              isOpen={sidebarOpen}
 
-                toggleSidebar={() =>
-                  setSidebarOpen((prev) => !prev)
-                }
-              />
-              <main className="pt-12">
-                <div className="min-h-[calc(100vh-91px)] py-3.5 px-0">
-                  {children}
-                </div>
-                <Footer/>
-              </main>
-            </div>
+              toggleSidebar={() =>
+                setSidebarOpen((prev) => !prev)
+              }
+            />
+            <main className="pt-12">
+              <div className="min-h-[calc(100vh-91px)] py-3.5 px-0">
+                {children}
+              </div>
+              <Footer/>
+            </main>
           </div>
         </div>
+      </div> */}
     </React.Fragment>
   )
 }

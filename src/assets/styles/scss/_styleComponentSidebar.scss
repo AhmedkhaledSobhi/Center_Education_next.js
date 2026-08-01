@@ -1,13 +1,18 @@
 @use 'variables' as *;
 
-.Sidebar{
+.Sidebar [data-sidebar="sidebar"]{
   // background-color: $sidebar-bg-color;
   background: $sidebar-bg-color-2;
-  width: calc(100% - 82.33333%);
+}
+.Sidebars{
+  // background-color: $sidebar-bg-color;
+  background: $sidebar-bg-color-2;
+  width: calc(100% - 80.33333%);
 }
 
 .sidebar-open{
-  width: calc(100% - 83.33333%);
+  width: calc(100% - 80.33333%);
+  margin-top: 5%;
 }
 .sidebar-close{
   width: calc(100% - 94.33333%);

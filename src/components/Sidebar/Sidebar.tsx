@@ -62,10 +62,10 @@ export default function Sidebar({ isOpens
   return (
     <React.Fragment>
       <aside 
-        className={`Sidebar 
+        className={`Sidebars 
           ${lang === "ar" ? "right-0" : "left-0"} 
           ${isOpens ? "sidebar-open" : "sidebar-close"}
-          fixed top-0 right -0 bottom-0 z-50 p-2.5  font-bold text-xl bg- blue-900
+          fi xed top-0 right -0 bottom-0 z-50 p-2.5  font-bold text-xl bg- blue-900
         `}
       >
         <div className='md-[h-20] text-white top-0 right-0 left- 0  flex items-center justify-center mt-3.5'>

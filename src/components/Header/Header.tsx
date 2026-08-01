@@ -6,44 +6,55 @@ import FullScreenDropdown from "../Common/FullScreenDropdown/FullScreenDropdown"
 import ProfileDropdown from "../Common/ProfileDropdown/ProfileDropdown";
 import BackDropdown from "../Common/BackDropdown/BackDropdown";
 import { MoveLeft, TextAlignStart } from "lucide-react";
-interface HeaderProps {
-  isOpen: boolean
-  toggleSidebar: () => void;
-}
+import { SidebarTrigger, useSidebar } from "../ui/sidebar";
 
-export default function Header({ isOpen,toggleSidebar }: HeaderProps) {
-  const [openMenus, setOpenMenus] = useState<boolean>(false);
+
+export default function Header(
+) {
+  const { state, isMobile } = useSidebar();
+  console.log("ahmed state", state);
+  console.log("ahmed isMobile", isMobile);
+  
+  const sidebarWidth = isMobile
+  ? "0px"
+  : state === "collapsed"
+  ? "var(--sidebar-width-icon)"
+  : "var(--sidebar-width)";
+  
+  console.log("ahmed sidebarWidth", sidebarWidth);
    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 576);
 
-    useEffect(() => {
-      const handleResize = () => setIsSmallScreen(window.innerWidth < 576);
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
+  useEffect(() => {
+    const handleResize = () => setIsSmallScreen(window.innerWidth < 576);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <React.Fragment>
-      <header className="bg-white fixed top-0 z-20 w-full border-b-[0.5px] 2 border-b-gray-200  "
+      <header className="bg-white fixed top-0 z-20 w -full border-b-[0.5px] 2 border-b-gray-200 "
         style={{
-          width: `calc(100% - ${isOpen? "16.9999%": "5.9999%"})`, 
+          width: `calc(100% - ${sidebarWidth})`,
+          transition: "width 200ms linear",
           height: "65px", 
           placeContent: "center"
         }}
       >
         <section className="flex items-center justify-between me-3 ms-3">
           <div className="flex items-center ">
-            <button 
-              className="me-2 cursor-pointer"
-              onClick={() => {
-                toggleSidebar()
-                setOpenMenus((prev)=> !prev )
-              }}
-            >
-              {openMenus ?
-                <MoveLeft size={28} color="gray" strokeWidth={2} />
+            <SidebarTrigger >
+              { state === "expanded" ? 
+                <TextAlignStart size={28} 
+                  color="#0d6efd"
+                  // color="gray"
+                  strokeWidth={2} />
                 :
-                <TextAlignStart size={28} color="gray" strokeWidth={2} />
+                <MoveLeft size={28} 
+                  color="#0d6efd"
+                // color="gray"
+                strokeWidth={2} />
               }
-            </button>
+            </SidebarTrigger>
+
             Header
           </div>
 
