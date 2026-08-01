@@ -3,14 +3,33 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
-import { User2, GraduationCap } from "lucide-react"
-
+} from "@/components/ui/sidebar";
+// import { User2, GraduationCap } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  ChevronsUpDown,
+  GraduationCap,
+  LogOut,
+  Plus,
+  Settings,
+  User2,
+} from "lucide-react";
+import links from "./LayoutMenuData";
 type AppSidebarProps = {
   side?: "left" | "right";
 };
@@ -23,6 +42,7 @@ export function AppSidebar({ side = "left" }: AppSidebarProps) {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   }
+  // import links from "";
 
   return (
     <Sidebar side={side} collapsible="icon" className="Sidebar">
@@ -63,16 +83,57 @@ export function AppSidebar({ side = "left" }: AppSidebarProps) {
       </SidebarHeader>
 
       <SidebarContent>
-        <SidebarGroup />
-        <SidebarGroup />
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupAction>
+            <Plus /> <span className="sr-only">Add Project</span>
+          </SidebarGroupAction>
+          <SidebarGroupContent></SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton>
-              <User2 /> Username
-            </SidebarMenuButton>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className="flex w-full items-center gap-2 rounded-md px-2 py-2 cursor-pointer bg-sidebar-accent  hover:bg-sidebar-accent-hover focus:bg-sidebar-accent-hover"
+              >
+                <Avatar className="h-8 w-8 ">
+                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarFallback className="rounded-full border border-black/25">
+                    <User2 className="size-4" />
+                  </AvatarFallback>
+                </Avatar>
+                <div className="grid flex-1 text-right text- white text-sm leading-tight">
+                  <span className="truncate font-semibold">{user.name}</span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {user.email}
+                  </span>
+                </div>
+                {/* <ChevronsUpDown className="ml-auto size-4" /> */}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+                side={isMobile ? "bottom" : "right"}
+                align="start"
+                sideOffset={4}
+              >
+                <DropdownMenuItem>
+                  <User2 className="mr-2 size-4" />
+                  Account
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Settings className="mr-2 size-4" />
+                  Settings
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <LogOut className="mr-2 size-4" />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
