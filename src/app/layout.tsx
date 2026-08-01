@@ -49,6 +49,11 @@
 import { Toaster } from "sonner";
 import "./globals.css";
 import { cookies } from "next/headers";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 export default async function RootLayout({
   children,
@@ -67,7 +72,7 @@ export default async function RootLayout({
   return (
     <html 
       // lang={params.lang}
-     suppressHydrationWarning
+     suppressHydrationWarning className={cn("font-sans", geist.variable)}
     >
       <body suppressHydrationWarning>
         <Toaster

@@ -200,7 +200,7 @@ export default function RegisterPage() {
 
             {/* _______ Form _______ */}
             <div className="flex-1 flex items-center justify-center py-6 pb-0">
-              <div className="w-full max-w-2xl xl bg-white rounded-3xl shadow-sm px-10 py-4">
+              <div className="w-full max-w-3xl 2xl xl bg-white rounded-3xl shadow-sm px-10 py-4">
                 <div className="text-center mb-5">
                   <h4 className="text-5xl md:text-2xl font-bold text-[#081b4b] mb-4">
                     {t("register.title")}!

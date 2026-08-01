@@ -24,12 +24,12 @@ export default function Header({ isOpen,toggleSidebar }: HeaderProps) {
     <React.Fragment>
       <header className="bg-white fixed top-0 z-20 w-full border-b-[0.5px] 2 border-b-gray-200  "
         style={{
-          width: `calc(100% - ${isOpen? "17.9999%": "5.9999%"})`, 
+          width: `calc(100% - ${isOpen? "16.9999%": "5.9999%"})`, 
           height: "65px", 
           placeContent: "center"
         }}
       >
-        <section className="flex items-center justify-between me-7 ms-3">
+        <section className="flex items-center justify-between me-3 ms-3">
           <div className="flex items-center ">
             <button 
               className="me-2 cursor-pointer"
