@@ -36,32 +36,6 @@ export default async function ProtectedLayout({ children }: Props) {
     <AuthGuard>
       <ProtectedLayoutClient locale={locale}>
         {children}
-        {/* <div 
-          dir={locale === "ar" ? "rtl" : "ltr"}
-          className="min-h-full flex flex-col"
-        >
-          <div className="flex justify-end ">
-            <Sidebar
-              isOpen={sidebarOpen}
-              onClose={() => setSidebarOpen(false)}
-            />
-            <div className="bg- amber-400"
-              style={{width: "calc(100% - 17.9999%)"}}
-            >
-              <Header
-                toggleSidebar={() =>
-                  setSidebarOpen((prev) => !prev)
-                }
-              />
-              <main className="pt-12">
-                <div className="min-h-[calc(100vh-91px)] py-3.5 px-0">
-                  {children}
-                </div>
-                <Footer/>
-              </main>
-            </div>
-          </div>
-        </div> */}
       </ProtectedLayoutClient>
     </AuthGuard>
   ) 
