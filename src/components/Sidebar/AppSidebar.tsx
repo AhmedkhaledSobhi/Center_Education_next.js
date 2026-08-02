@@ -1,18 +1,12 @@
 import {
   Sidebar,
-  SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-// import { User2, GraduationCap } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,24 +19,24 @@ import {
   ChevronsUpDown,
   GraduationCap,
   LogOut,
-  Plus,
   Settings,
   User2,
 } from "lucide-react";
-import links from "./LayoutMenuData";
+import AppSidebarContent from "./AppSidebarContent";
+import { cn } from "@/lib/utils";
 type AppSidebarProps = {
   side?: "left" | "right";
 };
 
 export function AppSidebar({ side = "left" }: AppSidebarProps) {
-  const { isMobile } = useSidebar()
+  const { isMobile, state } = useSidebar()
+  const isCollapsed = state === "collapsed";
 
   const user = {
     name: "shadcn",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   }
-  // import links from "";
 
   return (
     <Sidebar side={side} collapsible="icon" className="Sidebar">
@@ -82,22 +76,17 @@ export function AppSidebar({ side = "left" }: AppSidebarProps) {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Project</span>
-          </SidebarGroupAction>
-          <SidebarGroupContent></SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
+      <AppSidebarContent/>
 
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger
-                className="flex w-full items-center gap-2 rounded-md px-2 py-2 cursor-pointer bg-sidebar-accent  hover:bg-sidebar-accent-hover focus:bg-sidebar-accent-hover"
+                className={cn(
+                  "flex w-full items-center gap-2 rounded-md  py-2 cursor-pointer",
+                  !isCollapsed && "px-2 bg-sidebar-accent hover:bg-sidebar-accent-hover focus:bg-sidebar-accent-hover",
+                )}
               >
                 <Avatar className="h-8 w-8 ">
                   <AvatarImage src={user.avatar} alt={user.name} />

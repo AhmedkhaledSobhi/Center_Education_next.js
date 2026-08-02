@@ -46,20 +46,20 @@ const links: LinkType[] = [
       {
         id: "order",
         label: "SidebarMenu.Sales",
-        link: "/orders"
+        link: "/sales"
       },
       {
-        id: "order",
+        id: "order2",
         label: "SidebarMenu.Sales",
         link: "/orders"
       },
       {
-        id: "order",
+        id: "order3",
         label: "SidebarMenu.Sales",
-        link: "/orders"
+        link: "/sales"
       },
       {
-        id: "order",
+        id: "order4",
         label: "SidebarMenu.Sales",
         link: "/orders"
       },
